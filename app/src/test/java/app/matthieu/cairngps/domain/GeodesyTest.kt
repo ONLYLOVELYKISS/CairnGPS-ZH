@@ -29,6 +29,14 @@ class GeodesyTest {
     }
 
     @Test
+    fun `nearby points in Xi an produce local distance and bearing`() {
+        val result = distanceAndBearing(34.3416, 108.9398, 34.3426, 108.9398)
+
+        assertEquals(111.0, result.distanceMeters, 1.0)
+        assertEquals(0f, result.bearingTrueDegrees, 0.01f)
+    }
+
+    @Test
     fun `identical points are at distance zero`() {
         val result = distanceAndBearing(47.0, 6.0, 47.0, 6.0)
         assertEquals(0.0, result.distanceMeters, 0.0)

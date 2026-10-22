@@ -94,6 +94,23 @@ class LocationViewModelTest {
         }
     }
 
+    @Test
+    fun `startTracking receives the Xi an China GPS coordinates`() = runTest {
+        val locationRepository = mockk<LocationRepository> {
+            every { locationUpdates() } returns flowOf(fixOf(latitude = 34.3416, longitude = 108.9398))
+            every { satelliteUpdates() } returns flowOf(listOf(satelliteOf(usedInFix = true)))
+            every { gpsProviderEnabled() } returns emptyFlow()
+        }
+        val viewModel = viewModel(locationRepository = locationRepository)
+
+        viewModel.startTracking()
+        runCurrent()
+
+        assertTrue(viewModel.uiState.value.hasFix)
+        assertEquals(34.3416, viewModel.uiState.value.fix?.latitude)
+        assertEquals(108.9398, viewModel.uiState.value.fix?.longitude)
+    }
+
     private fun trackingViewModel(
         fixes: MutableSharedFlow<LocationData>,
         providerEnabled: MutableSharedFlow<Boolean> = MutableSharedFlow(),

@@ -45,6 +45,16 @@ class LocationDataTest {
     }
 
     @Test
+    fun `toLocationData preserves a GPS fix in Xi an China`() {
+        val location = locationOf(latitude = 34.3416, longitude = 108.9398)
+
+        val result = location.toLocationData(geoidSeparationMeters = 0.0)
+
+        assertEquals(34.3416, result.latitude, 0.0)
+        assertEquals(108.9398, result.longitude, 0.0)
+    }
+
+    @Test
     fun `toLocationData subtracts the geoid separation from altitude`() {
         val location = locationOf(altitude = 150.0)
 
