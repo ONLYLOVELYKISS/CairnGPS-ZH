@@ -10,7 +10,6 @@ import androidx.core.content.ContextCompat
 import app.matthieu.cairngps.domain.gamification.Achievements
 import app.matthieu.cairngps.domain.gamification.AchievementDef
 import app.matthieu.cairngps.domain.gamification.GamificationMetrics
-import app.matthieu.cairngps.demo.DemoMode
 import kotlin.math.abs
 import kotlin.math.roundToInt
 import kotlinx.coroutines.CoroutineDispatcher
@@ -157,9 +156,7 @@ class GamificationManager(
     @SuppressLint("MissingPermission")
     fun startLiveTracking() {
         if (liveJob?.isActive == true) return
-        // Demo mode feeds simulated fixes through the same repository, so the records/achievements
-        // shown in a capture progress even on a device that never granted the permission.
-        if (!DemoMode.isEnabled && !hasLocationPermission()) return
+        if (!hasLocationPermission()) return
 
         liveJob = scope.launch {
             launch {

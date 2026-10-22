@@ -7,7 +7,6 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import androidx.core.content.getSystemService
 import app.matthieu.cairngps.demo.DemoGpsSource
-import app.matthieu.cairngps.demo.DemoMode
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -39,9 +38,7 @@ class CompassRepository internal constructor(context: Context, private val demo:
 
     constructor(context: Context) : this(
         context,
-        // Screenshot/screencast demo mode (debug builds only): the heading follows the simulated
-        // walk instead of the magnetometer, so the dial and the position on screen agree. See DemoMode.
-        demo = if (DemoMode.isEnabled) DemoGpsSource() else null,
+        demo = null,
     )
 
     private val sensorManager: SensorManager =
@@ -101,7 +98,7 @@ class CompassRepository internal constructor(context: Context, private val demo:
 
     companion object {
         /**
-         * A [CompassRepository] permanently backed by [DemoGpsSource], regardless of [DemoMode].
+         * A [CompassRepository] permanently backed by [DemoGpsSource].
          * Used by the onboarding tour so the dial follows the simulated walk on the real Compass
          * screen without registering a real sensor listener.
          */

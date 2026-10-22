@@ -6,9 +6,9 @@ import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
@@ -16,7 +16,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -30,6 +32,7 @@ import app.matthieu.cairngps.data.AppContainer
 import app.matthieu.cairngps.ui.about.AboutScreen
 import app.matthieu.cairngps.ui.about.LicenseScreen
 import app.matthieu.cairngps.ui.about.ThirdPartyScreen
+import app.matthieu.cairngps.ui.common.liquidGlass
 import app.matthieu.cairngps.ui.compass.CompassRoute
 import app.matthieu.cairngps.ui.gamification.AchievementsRoute
 import app.matthieu.cairngps.ui.gamification.LevelsRoute
@@ -47,7 +50,6 @@ import app.matthieu.cairngps.ui.satellites.SatelliteGlobeRoute
 import app.matthieu.cairngps.ui.satellites.SatellitesRoute
 import app.matthieu.cairngps.ui.settings.SettingsRoute
 import app.matthieu.cairngps.ui.theme.Glyph
-import app.matthieu.cairngps.ui.theme.LightNavBar
 import app.matthieu.cairngps.ui.theme.LightNavIndicator
 import app.matthieu.cairngps.ui.theme.LightNavSelectedIcon
 import app.matthieu.cairngps.ui.theme.LightNavSelectedText
@@ -135,11 +137,15 @@ fun MainScaffold(
     // (including the bottom bar) regardless of which tab triggered the achievement.
     Box(modifier = Modifier.fillMaxSize()) {
         Scaffold(
+            containerColor = Color.Transparent,
             bottomBar = {
                 if (showBottomBar) {
                     val light = LocalIsLightTheme.current
                     NavigationBar(
-                        containerColor = if (light) LightNavBar else NavigationBarDefaults.containerColor,
+                        modifier = Modifier
+                            .padding(horizontal = 12.dp, vertical = 8.dp)
+                            .liquidGlass(RoundedCornerShape(28.dp)),
+                        containerColor = Color.Transparent,
                     ) {
                         TopLevelTab.entries.forEach { tab ->
                             val selected = currentRoute == tab.route

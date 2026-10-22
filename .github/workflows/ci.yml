@@ -31,7 +31,7 @@ jobs:
           validate-wrappers: true
 
       - name: Assemble debug
-        run: ./gradlew assembleDebug
+        run: ./gradlew :app:verifyUniversalDebugApk
 
       - name: Run unit tests
         run: ./gradlew testDebugUnitTest

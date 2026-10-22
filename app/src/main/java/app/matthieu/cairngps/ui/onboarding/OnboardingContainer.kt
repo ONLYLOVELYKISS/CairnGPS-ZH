@@ -21,12 +21,11 @@ import app.matthieu.cairngps.demo.DemoDataSeeder
  * The onboarding tour's own [AppContainer], so [app.matthieu.cairngps.ui.navigation.MainScaffold]
  * can render the app's real screens fed entirely by synthetic data:
  *
- * - [locationRepository]/[compassRepository] are backed by [app.matthieu.cairngps.demo.DemoGpsSource]
- *   directly rather than by [app.matthieu.cairngps.demo.DemoMode] — the tour must work in release
- *   builds too, where `DemoMode.isAvailable` is `false`, and must never touch the real GPS chip or
- *   require [android.Manifest.permission.ACCESS_FINE_LOCATION].
+ * - [locationRepository]/[compassRepository] use [app.matthieu.cairngps.demo.DemoGpsSource] only
+ *   inside this isolated tour container, so the tour never touches the real GPS chip or requires
+ *   [android.Manifest.permission.ACCESS_FINE_LOCATION].
  * - Every Room-backed repository sits on its own in-memory [AppDatabase] ([seed] fills it with the
- *   same fictional history [DemoDataSeeder] builds for the debug-only demo mode), so the tour never
+ *   same fictional history [DemoDataSeeder] builds for this tour), so the tour never
  *   reads or writes the user's real `cairn.db`.
  * - [settingsRepository] is the one exception: it's the app's real instance, so the tour honours
  *   whatever theme/coordinate-format the user already picked instead of overriding it.
@@ -88,7 +87,7 @@ class OnboardingContainer(context: Context) : AppContainer, AutoCloseable {
         gamificationFlagsRepository,
     )
 
-    /** Fills the in-memory database with the same fictional hiking history demo mode uses. */
+    /** Fills the in-memory database with fictional hiking history for the guided tour. */
     suspend fun seed() {
         DemoDataSeeder(
             sessionDao = database.sessionDao(),

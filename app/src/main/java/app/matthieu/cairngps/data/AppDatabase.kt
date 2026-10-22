@@ -5,7 +5,6 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
-import app.matthieu.cairngps.demo.DemoMode
 
 /**
  * The app's single Room database and the source of truth for all persisted data.
@@ -186,9 +185,7 @@ abstract class AppDatabase : RoomDatabase() {
                 instance ?: build(context).also { instance = it }
             }
 
-        // Demo mode (debug builds only) opens a separate file seeded with fictional data, so a
-        // screenshot session never reads — or writes to — the real hikes in cairn.db.
-        private fun databaseName(): String = if (DemoMode.isEnabled) "cairn-demo.db" else "cairn.db"
+        private fun databaseName(): String = "cairn.db"
 
         private fun build(context: Context): AppDatabase =
             Room.databaseBuilder(
@@ -202,7 +199,7 @@ abstract class AppDatabase : RoomDatabase() {
         /**
          * A throwaway, process-memory-only database, created fresh at the current schema (no
          * migration needed) and gone once its handle is closed. Used by the onboarding tour so it
-         * never reads or writes [databaseName]'s file — not even the debug-only demo one.
+         * never reads or writes the user's persistent database file.
          */
         fun inMemory(context: Context): AppDatabase =
             Room.inMemoryDatabaseBuilder(context.applicationContext, AppDatabase::class.java).build()

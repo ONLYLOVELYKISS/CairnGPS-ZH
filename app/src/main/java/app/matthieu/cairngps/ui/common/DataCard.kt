@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -42,25 +43,30 @@ fun DataCard(
     enabled: Boolean = true,
     content: @Composable ColumnScope.() -> Unit,
 ) {
-    // Material3's default Card container pulls from the surfaceContainer* roles, which Compose
-    // derives from primary/neutral tones rather than our explicit colorScheme.surface — so left
-    // at its default it drifts from the design's flat #161C18. Force it back to colorScheme.surface
-    // (which *is* DarkSurface / #161C18, set explicitly in Theme.kt) to match the mock exactly.
-    // The disabled variant needs the same override: CoordinatesCard is disabled while there's no
-    // fix, and without this it would fall back to Material3's dimmed disabled container, making it
-    // look different from the other (always-enabled) cards — the design keeps every card the same
-    // flat color regardless of fix state.
-    val colors = CardDefaults.cardColors(
-        containerColor = MaterialTheme.colorScheme.surface,
-        disabledContainerColor = MaterialTheme.colorScheme.surface,
-        disabledContentColor = MaterialTheme.colorScheme.onSurface,
-    )
+    // Keep Material's own card layer transparent so the shared Liquid Glass surface underneath
+    // remains visible; explicitly preserve content contrast for a disabled coordinates card.
+    val shape = RoundedCornerShape(24.dp)
+    val glassModifier = Modifier.liquidGlass(shape)
     if (onClick != null) {
-        Card(onClick = onClick, enabled = enabled, colors = colors, modifier = modifier.fillMaxWidth()) {
+        Card(
+            onClick = onClick,
+            enabled = enabled,
+            shape = shape,
+            colors = CardDefaults.cardColors(
+                containerColor = androidx.compose.ui.graphics.Color.Transparent,
+                disabledContainerColor = androidx.compose.ui.graphics.Color.Transparent,
+                disabledContentColor = MaterialTheme.colorScheme.onSurface,
+            ),
+            modifier = modifier.fillMaxWidth().then(glassModifier),
+        ) {
             Column(modifier = Modifier.padding(20.dp), content = content)
         }
     } else {
-        Card(colors = colors, modifier = modifier.fillMaxWidth()) {
+        Card(
+            shape = shape,
+            colors = CardDefaults.cardColors(containerColor = androidx.compose.ui.graphics.Color.Transparent),
+            modifier = modifier.fillMaxWidth().then(glassModifier),
+        ) {
             Column(modifier = Modifier.padding(20.dp), content = content)
         }
     }

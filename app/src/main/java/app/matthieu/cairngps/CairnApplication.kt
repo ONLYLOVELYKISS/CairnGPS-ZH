@@ -18,12 +18,6 @@ import app.matthieu.cairngps.data.RecordsRepository
 import app.matthieu.cairngps.data.SessionRepository
 import app.matthieu.cairngps.data.SettingsRepository
 import app.matthieu.cairngps.data.WaypointRepository
-import app.matthieu.cairngps.demo.DemoDataSeeder
-import app.matthieu.cairngps.demo.DemoMode
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.launch
 
 /**
  * Application-scoped container. Holds the singleton repositories so they survive configuration
@@ -90,11 +84,6 @@ class CairnApplication : Application(), AppContainer {
     override fun onCreate() {
         super.onCreate()
 
-        // Must run before anything touches a repository: it decides which database file to open
-        // and whether the location/compass sources are real or simulated. No-op in release.
-        DemoMode.init(this)
-        if (DemoMode.isEnabled) seedDemoData()
-
         // Gates GamificationManager's live GPS+GNSS subscription to whenever the app itself is in
         // the foreground (any screen), independently of which screen's own onStart/onStop fires —
         // achievements/records should progress no matter which tab is open.
@@ -111,19 +100,4 @@ class CairnApplication : Application(), AppContainer {
         )
     }
 
-    /**
-     * Fills the demo database on its first run. Fire-and-forget rather than blocking `onCreate`:
-     * every screen reads through a Room [kotlinx.coroutines.flow.Flow], so they simply re-emit
-     * once the rows land instead of needing the data to be there before the first frame.
-     */
-    private fun seedDemoData() {
-        CoroutineScope(SupervisorJob() + Dispatchers.IO).launch {
-            DemoDataSeeder(
-                sessionDao = database.sessionDao(),
-                trackPointDao = database.trackPointDao(),
-                waypointDao = database.waypointDao(),
-                gamificationFlagDao = database.gamificationFlagDao(),
-            ).seedIfEmpty()
-        }
-    }
 }

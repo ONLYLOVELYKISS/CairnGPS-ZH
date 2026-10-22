@@ -258,14 +258,6 @@ private fun IdentityCard(light: Boolean, mutedText: Color) {
                         )
                         .padding(horizontal = 10.dp, vertical = 5.dp),
                 )
-                // Only the build number, never a build date: an embedded timestamp would make the
-                // APK differ from build to build and break F-Droid's reproducible builds.
-                Text(
-                    text = stringResource(R.string.about_build_fmt, BuildConfig.VERSION_CODE),
-                    fontSize = 12.5.sp,
-                    fontFamily = MonoFontFamily,
-                    color = mutedText,
-                )
             }
         }
     }

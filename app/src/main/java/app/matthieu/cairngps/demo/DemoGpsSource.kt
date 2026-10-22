@@ -46,10 +46,9 @@ private val demoRoute = DemoRoute(
 )
 
 /**
- * The synthetic replacement for the GPS chip, the GNSS engine and the compass while
- * [DemoMode] is on — see [app.matthieu.cairngps.data.LocationRepository] and
- * [app.matthieu.cairngps.data.CompassRepository], which delegate to it instead of touching
- * `LocationManager`/`SensorManager` at all.
+ * The synthetic replacement for the GPS chip, the GNSS engine and the compass used by the
+ * onboarding tour — see [app.matthieu.cairngps.ui.onboarding.OnboardingContainer], which
+ * injects it into isolated screen repositories instead of using the device GPS and compass.
  *
  * Every value is a pure function of the wall clock: no state, no accumulated drift, identical
  * across app restarts, and continuous — which is what makes it usable for a screen recording

@@ -26,7 +26,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -59,7 +58,6 @@ import app.matthieu.cairngps.data.NorthReference
 import app.matthieu.cairngps.data.SettingsRepository
 import app.matthieu.cairngps.data.ThemeMode
 import app.matthieu.cairngps.data.UnitSystem
-import app.matthieu.cairngps.demo.DemoMode
 import app.matthieu.cairngps.ui.common.SegmentedToggle
 import app.matthieu.cairngps.ui.theme.AboutDivider
 import app.matthieu.cairngps.ui.theme.AboutDividerLight
@@ -373,56 +371,6 @@ private fun SettingsScreen(
                 )
             }
 
-            // Debug builds only: absent from the release APK, where DemoMode.isAvailable is the
-            // compile-time constant false.
-            if (DemoMode.isAvailable) {
-                DemoModeSection()
-            }
-        }
-    }
-}
-
-/**
- * The screenshot/screencast demo-mode switch. Toggling it restarts the app, since which database
- * file is open and whether the sensors are simulated are both decided at process start — see
- * [DemoMode].
- */
-@Composable
-private fun DemoModeSection() {
-    val context = LocalContext.current
-    val enabled = remember { DemoMode.isPersistedEnabled(context) }
-    val light = LocalIsLightTheme.current
-
-    SettingsSection(stringResource(R.string.settings_demo_section)) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 18.dp, vertical = 15.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(14.dp),
-        ) {
-            Sym(
-                icon = Glyph.PhotoCamera,
-                contentDescription = null,
-                size = 22.dp,
-                tint = MaterialTheme.colorScheme.primary,
-            )
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = stringResource(R.string.settings_demo_title),
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.SemiBold,
-                )
-                Text(
-                    text = stringResource(R.string.settings_demo_subtitle),
-                    fontSize = 12.5.sp,
-                    color = if (light) AboutMuted else LabelMuted,
-                )
-            }
-            Switch(
-                checked = enabled,
-                onCheckedChange = { DemoMode.setEnabled(context, it) },
-            )
         }
     }
 }

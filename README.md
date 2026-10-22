@@ -8,7 +8,7 @@
 实时显示 GPS/GNSS 信息，并通过成就、记录和等级等游戏化功能，让户外定位更加有趣。
 </p>
 <p align="center">
-  <a href="https://github.com/ONLYLOVELYKISS/CairnGPS-ZH/releases">下载简体中文测试 APK</a>
+  <a href="https://github.com/ONLYLOVELYKISS/CairnGPS-ZH/releases">下载简体中文通用 APK</a>
 </p>
 
 > Releases 中的 APK 使用 Android Debug 签名，仅供安装和功能测试，不是正式发行版，也不代表 Google Play 版本。
@@ -42,7 +42,7 @@
 
 ## 测试 APK
 
-最新的简体中文 Debug 测试包发布在本仓库的 [Releases](https://github.com/ONLYLOVELYKISS/CairnGPS-ZH/releases) 页面。发布包会明确标记为测试版，并附带 SHA-256 校验文件。
+最新的简体中文 Debug 通用测试包发布在本仓库的 [Releases](https://github.com/ONLYLOVELYKISS/CairnGPS-ZH/releases) 页面。该单体 APK 包含 arm64-v8a、armeabi-v7a、x86 和 x86_64，不需要额外安装 split APK；发布前会校验 APK 包名、ABI 和结构。发布包会明确标记为测试版，并附带 SHA-256 校验文件。
 
 测试包的限制：
 

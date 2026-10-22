@@ -17,7 +17,6 @@ import android.os.Looper
 import androidx.annotation.RequiresPermission
 import androidx.core.content.getSystemService
 import app.matthieu.cairngps.demo.DemoGpsSource
-import app.matthieu.cairngps.demo.DemoMode
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -43,10 +42,7 @@ class LocationRepository internal constructor(context: Context, private val demo
 
     constructor(context: Context) : this(
         context,
-        // Screenshot/screencast demo mode (debug builds only): every public flow below serves
-        // synthetic data and the GPS chip is never touched. Null — and, in release, folded away
-        // entirely — in every normal run. See DemoMode.
-        demo = if (DemoMode.isEnabled) DemoGpsSource() else null,
+        demo = null,
     )
 
     // Application context is stored via getSystemService below; we don't retain the Context itself.
@@ -255,7 +251,7 @@ class LocationRepository internal constructor(context: Context, private val demo
 
     companion object {
         /**
-         * A [LocationRepository] permanently backed by [DemoGpsSource], regardless of [DemoMode].
+         * A [LocationRepository] permanently backed by [DemoGpsSource].
          * Used by the onboarding tour so it can walk the real screens on synthetic data without
          * ever touching the GPS chip or requiring [android.Manifest.permission.ACCESS_FINE_LOCATION].
          */

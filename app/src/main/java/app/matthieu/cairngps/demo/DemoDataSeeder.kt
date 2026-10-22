@@ -29,7 +29,7 @@ private const val TRACK_LOOP_FRACTION = 1.015
 private const val PEAK_SPEED_FACTOR = 1.35f
 
 /**
- * Fills the throwaway demo database with a fictional hiking history the first time [DemoMode] runs.
+ * Fills the onboarding tour's throwaway in-memory database with a fictional hiking history.
  *
  * Only sessions, tracks, waypoints and the settings-related flags are written: records and
  * achievements are deliberately *not* seeded, because

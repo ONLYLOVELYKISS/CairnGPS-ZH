@@ -70,10 +70,6 @@
     <string name="settings_help_section">Help</string>
     <string name="settings_replay_onboarding_title">Replay the tour</string>
     <string name="settings_replay_onboarding_subtitle">Walk through the app\'s screens again with sample data</string>
-    <!-- Debug builds only: the screenshot demo mode is shrunk out of the release APK. -->
-    <string name="settings_demo_section">Debug</string>
-    <string name="settings_demo_title">Demo mode</string>
-    <string name="settings_demo_subtitle">Simulated position, satellites and history for screenshots. Restarts the app.</string>
     <string name="settings_data_section">Data</string>
     <string name="settings_export_title">Export data</string>
     <string name="settings_export_subtitle">Waypoints, tracks, achievements and settings in a single file</string>
@@ -538,7 +534,6 @@
     <!-- About screen (design 7a/7b), reached from the bottom of Settings -->
     <string name="about_title">About</string>
     <string name="about_tagline">Offline hiking GPS. Free software, no ads.</string>
-    <string name="about_build_fmt">build %1$d</string>
     <string name="about_section_project">Project</string>
     <string name="about_section_contact">Contact</string>
     <string name="about_source_title">Source code</string>

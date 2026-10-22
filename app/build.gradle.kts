@@ -1,3 +1,5 @@
+import java.util.zip.ZipFile
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -23,6 +25,14 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    // Always publish one installable APK containing every supported ABI. This prevents a split APK
+    // (or a base APK without its native config split) from being distributed as the standalone file.
+    splits {
+        abi {
+            isEnable = false
+        }
+    }
+
     dependenciesInfo {
         includeInApk = false
         includeInBundle = false
@@ -35,6 +45,8 @@ android {
     // bytes for the same .so than ours. Keeping them unstripped removes that variable entirely.
     packaging {
         jniLibs {
+            // Keep native libraries in the APK for broad compatibility with standalone sideloading.
+            useLegacyPackaging = true
             keepDebugSymbols.add("**/*.so")
         }
     }
@@ -73,10 +85,7 @@ android {
     }
     buildFeatures {
         compose = true
-        // BuildConfig.DEBUG gates the screenshot demo mode's switch (see demo/DemoMode.kt). It is
-        // a compile-time constant, so R8 folds every `if (BuildConfig.DEBUG)` branch away in
-        // release. The demo package's data generators stay in the release APK regardless — the
-        // first-launch onboarding tour (ui/onboarding) also runs on them.
+        // BuildConfig is used for app version metadata and runtime diagnostics.
         buildConfig = true
     }
     testOptions {
@@ -84,6 +93,51 @@ android {
             isReturnDefaultValues = true
             isIncludeAndroidResources = true
         }
+    }
+}
+
+tasks.register("verifyUniversalDebugApk") {
+    dependsOn("assembleDebug")
+
+    doLast {
+        val outputDir = layout.buildDirectory.dir("outputs/apk/debug").get().asFile
+        val metadataFile = outputDir.resolve("output-metadata.json")
+        val apkFile = outputDir.resolve("app-debug.apk")
+
+        check(metadataFile.isFile) { "Missing APK output metadata: $metadataFile" }
+        check(apkFile.isFile) { "Missing universal APK: $apkFile" }
+
+        val metadata = metadataFile.readText()
+        check(metadata.contains("\"applicationId\": \"app.matthieu.cairngps\"")) {
+            "APK metadata has no expected applicationId"
+        }
+        check(metadata.contains("\"type\": \"SINGLE\"")) {
+            "APK output is not a single universal APK"
+        }
+        check(metadata.contains("\"filters\": []")) {
+            "APK output contains ABI or configuration filters"
+        }
+
+        ZipFile(apkFile).use { apk ->
+            val requiredEntries = listOf("AndroidManifest.xml", "classes.dex", "resources.arsc")
+            requiredEntries.forEach { entry ->
+                check(apk.getEntry(entry) != null) { "APK is missing required entry: $entry" }
+            }
+
+            val requiredAbis = setOf("arm64-v8a", "armeabi-v7a", "x86", "x86_64")
+            val includedAbis = apk.entries().asSequence()
+                .map { it.name }
+                .mapNotNull { name ->
+                    if (!name.startsWith("lib/") || !name.endsWith(".so")) return@mapNotNull null
+                    name.substringAfter("lib/").substringBefore('/')
+                }
+                .toSet()
+            check(requiredAbis.all(includedAbis::contains)) {
+                "Universal APK is missing an ABI: expected $requiredAbis, found $includedAbis"
+            }
+        }
+
+        logger.lifecycle("Verified universal APK: ${apkFile.absolutePath}")
     }
 }
 

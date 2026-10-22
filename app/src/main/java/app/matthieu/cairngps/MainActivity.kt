@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
@@ -13,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.matthieu.cairngps.data.AppSettings
 import app.matthieu.cairngps.data.ThemeMode
+import app.matthieu.cairngps.ui.common.LiquidGlassBackground
 import app.matthieu.cairngps.ui.navigation.MainScaffold
 import app.matthieu.cairngps.ui.onboarding.OnboardingHost
 import app.matthieu.cairngps.ui.permission.LocationPermissionGate
@@ -48,16 +50,21 @@ class MainActivity : AppCompatActivity() {
             val scope = rememberCoroutineScope()
 
             CairnGpsTheme(darkTheme = darkTheme) {
-                Surface(modifier = Modifier.fillMaxSize()) {
-                    when (onboardingCompleted) {
-                        null -> Unit
-                        false -> OnboardingHost(
-                            onFinish = {
-                                scope.launch { app.settingsRepository.setOnboardingCompleted(true) }
-                            },
-                        )
-                        true -> LocationPermissionGate {
-                            MainScaffold(app)
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background,
+                ) {
+                    LiquidGlassBackground {
+                        when (onboardingCompleted) {
+                            null -> Unit
+                            false -> OnboardingHost(
+                                onFinish = {
+                                    scope.launch { app.settingsRepository.setOnboardingCompleted(true) }
+                                },
+                            )
+                            true -> LocationPermissionGate {
+                                MainScaffold(app)
+                            }
                         }
                     }
                 }

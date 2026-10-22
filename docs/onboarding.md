@@ -9,20 +9,16 @@ d'explication.
 ## Pourquoi un conteneur séparé
 
 L'onboarding rejoue les vrais écrans (`ui/navigation/MainScaffold`), mais au premier lancement il
-n'y a aucune donnée réelle — aucun fix GPS, aucune session, aucun succès. Le mode démo existant
-(`demo/DemoMode.kt`, voir `docs/mode-demo.md`) génère exactement les données fictives voulues,
-mais ne peut pas être réutilisé tel quel : il n'existe qu'en debug (`BuildConfig.DEBUG`) et il
-bascule tout le fichier de base de données (`cairn-demo.db`) en redémarrant le processus.
+n'y a aucune donnée réelle — aucun fix GPS, aucune session, aucun succès. Il utilise un conteneur
+isolé avec une position et un historique fictifs, uniquement le temps de la visite guidée.
 
 L'onboarding construit donc son propre graphe de dépendances (`ui/onboarding/OnboardingContainer`,
 qui implémente `data/AppContainer` — la même interface que `CairnApplication`) :
 
-- `LocationRepository.simulated(context)` / `CompassRepository.simulated(context)` : les mêmes
-  générateurs (`demo/DemoGpsSource`) que le mode démo, injectés directement plutôt que gated par
-  `DemoMode.isEnabled` — ils fonctionnent donc aussi en release.
+- `LocationRepository.simulated(context)` / `CompassRepository.simulated(context)` : des générateurs
+  de position et de cap injectés uniquement dans le conteneur temporaire de la visite.
 - Une base Room **en mémoire** (`AppDatabase.inMemory`), remplie une fois par
-  `demo/DemoDataSeeder` (les mêmes dix randonnées fictives que le mode démo). La vraie `cairn.db`
-  n'est jamais ouverte.
+  `demo/DemoDataSeeder`. La vraie `cairn.db` n'est jamais ouverte.
 - `SettingsRepository` est le vrai : la visite respecte le thème et le format de coordonnées déjà
   choisis par l'utilisateur.
 - `GamificationManager` tourne sur ce graphe mais sans jamais appeler `startLiveTracking()` : son

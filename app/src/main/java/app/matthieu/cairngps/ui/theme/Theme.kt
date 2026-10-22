@@ -19,7 +19,7 @@ private val DarkColors = darkColorScheme(
     tertiary = CairnStone,
     background = DarkBackground,
     onBackground = DarkOnSurface,
-    surface = DarkSurface,
+    surface = DarkGlassSurface,
     onSurface = DarkOnSurface,
 )
 
@@ -30,7 +30,7 @@ private val LightColors = lightColorScheme(
     tertiary = CairnStone,
     background = LightBackground,
     onBackground = LightOnSurface,
-    surface = LightSurface,
+    surface = LightGlassSurface,
     onSurface = LightOnSurface,
 )
 

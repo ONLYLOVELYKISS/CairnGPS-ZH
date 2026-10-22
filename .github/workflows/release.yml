@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       release_tag:
-        description: "Unique release tag, for example zh-v1.1.1"
+        description: "Unique release tag, for example zh-v1.1.2-preview"
         required: true
         type: string
       notes:
@@ -61,7 +61,7 @@ jobs:
           validate-wrappers: true
 
       - name: Build and test
-        run: ./gradlew assembleDebug testDebugUnitTest
+        run: ./gradlew :app:verifyUniversalDebugApk testDebugUnitTest
 
       - name: Prepare APK and release notes
         env:
@@ -71,12 +71,27 @@ jobs:
           set -euo pipefail
           version_name="$(grep -m1 '^VERSION_NAME=' gradle.properties | cut -d= -f2)"
           apk_src="app/build/outputs/apk/debug/app-debug.apk"
-          apk_name="CairnGPS-${version_name}-zh-debug.apk"
+          apk_name="CairnGPS-${version_name}-zh-universal-debug.apk"
 
           if [ ! -f "$apk_src" ]; then
             echo "::error::找不到 Debug APK：${apk_src}"
             exit 1
           fi
+
+          aapt2="$(find "$ANDROID_HOME/build-tools" -type f -name aapt2 -print | sort -V | tail -n 1)"
+          if [ -z "$aapt2" ]; then
+            echo "::error::找不到 Android SDK 的 aapt2，无法验证 APK 包名。"
+            exit 1
+          fi
+          badging="$($aapt2 dump badging "$apk_src")"
+          echo "$badging" | grep -F "package: name='app.matthieu.cairngps'" >/dev/null || {
+            echo "::error::APK Manifest 的 package 为空或不是 app.matthieu.cairngps。"
+            exit 1
+          }
+          echo "$badging" | grep -F "native-code: 'arm64-v8a' 'armeabi-v7a' 'x86' 'x86_64'" >/dev/null || {
+            echo "::error::APK 未包含完整的通用 ABI 集合。"
+            exit 1
+          }
 
           cp "$apk_src" "$apk_name"
           sha256sum "$apk_name" > "${apk_name}.sha256"
@@ -84,8 +99,9 @@ jobs:
           {
             echo "# CairnGPS 简体中文测试版"
             echo
-            echo "这是 CairnGPS-ZH 的简体中文 Debug 测试包（版本 ${version_name}）。"
+            echo "这是 CairnGPS-ZH 的简体中文通用 Debug 测试包（版本 ${version_name}）。"
             echo
+            echo "- APK 是包含 arm64-v8a、armeabi-v7a、x86、x86_64 的单体通用包。"
             echo "- APK 使用 Android Debug 签名，仅供安装和功能测试。"
             echo "- 这不是正式发行版，不代表 Google Play 或其他应用商店版本。"
             echo "- 发布来源：${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}"
@@ -103,10 +119,10 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: cairngps-zh-debug-${{ github.run_number }}
+          name: cairngps-zh-universal-debug-${{ github.run_number }}
           path: |
-            CairnGPS-*-zh-debug.apk
-            CairnGPS-*-zh-debug.apk.sha256
+            CairnGPS-*-zh-universal-debug.apk
+            CairnGPS-*-zh-universal-debug.apk.sha256
           if-no-files-found: ignore
           retention-days: 14
 

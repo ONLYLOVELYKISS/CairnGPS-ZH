@@ -13,6 +13,14 @@ val DarkBackground = Color(0xFF0E1310)
 val DarkSurface = Color(0xFF161C18)
 val DarkOnSurface = Color(0xFFE6EAE3)
 
+// Liquid Glass foundation: translucent surfaces, a fine edge and a restrained top highlight.
+val DarkGlassSurface = Color(0xCC1B2821)
+val DarkGlassHighlight = Color(0x1FFFFFFF)
+val DarkGlassBorder = Color(0x50FFFFFF)
+val LightGlassSurface = Color(0xBFFFFFFF)
+val LightGlassHighlight = Color(0x70FFFFFF)
+val LightGlassBorder = Color(0x66FFFFFF)
+
 // Light equivalents, matching the design's light-theme variant (screen 1o).
 val LightBackground = Color(0xFFF4F7F1)
 val LightSurface = Color(0xFFFFFFFF)
