@@ -5,11 +5,11 @@
 <p align="center">
 <b>一款实时显示 GPS/GNSS 信息的 Android 应用</b>，并通过成就、记录和等级等游戏化功能，让户外定位更加有趣。
 <br />
-立即前往 <a href="https://github.com/MatthieuTinnes/CairnGPS/releases">Releases</a> 下载，或通过 Google Play 获取。
+中文测试版 APK：<a href="https://github.com/ONLYLOVELYKISS/CairnGPS-ZH/releases/latest">本仓库 Releases</a>（Debug 签名，仅供测试）。正式版可通过 Google Play 获取。
 <br />
 <i>An Android app displaying real-time GPS/GNSS information with achievements, records and levels.</i>
 <br />
-<i>Available from <a href="https://github.com/MatthieuTinnes/CairnGPS/releases">Releases</a> or Google Play.</i>
+<i>Simplified Chinese test APK: <a href="https://github.com/ONLYLOVELYKISS/CairnGPS-ZH/releases/latest">this repository's Releases</a> (debug-signed, for testing only).</i>
 </p>
 <p align="center">
   <a href="https://play.google.com/store/apps/details?id=app.matthieu.cairngps">
