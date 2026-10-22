@@ -524,8 +524,8 @@
     <string name="about_section_project">项目</string>
     <string name="about_section_contact">联系方式</string>
     <string name="about_source_title">源代码</string>
-    <string name="about_source_url">github.com/MatthieuTinnes/CairnGPS</string>
-    <string name="about_source_uri" translatable="false">https://github.com/MatthieuTinnes/CairnGPS</string>
+    <string name="about_source_url">github.com/ONLYLOVELYKISS/CairnGPS-ZH</string>
+    <string name="about_source_uri" translatable="false">https://github.com/ONLYLOVELYKISS/CairnGPS-ZH</string>
     <string name="about_license_row_title">AGPL-3.0 许可证</string>
     <string name="about_license_row_subtitle">自由软件</string>
     <string name="about_libraries_title">第三方组件</string>
@@ -535,7 +535,7 @@
     <string name="about_website_uri" translatable="false">https://matthieu.app</string>
     <string name="about_email_title">联系作者</string>
     <string name="about_email_address" translatable="false">cairngps@matthieu.app</string>
-    <string name="about_bug_hint">请直接在 GitHub 上报告问题，这样最快就能获得修复。</string>
+    <string name="about_bug_hint">请在本项目 GitHub 仓库报告问题，这样最快就能获得修复。</string>
     <string name="about_privacy">您的数据不会离开手机。</string>
     <string name="about_open_external">在外部应用中打开链接</string>
     <string name="about_no_app">没有应用可以打开此链接</string>

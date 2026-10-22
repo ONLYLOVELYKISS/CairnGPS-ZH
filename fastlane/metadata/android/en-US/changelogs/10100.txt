@@ -1,3 +1,0 @@
-Features
-- Scroll to achievement when last acquired achievement is opened
-- Add onboarding (#8)

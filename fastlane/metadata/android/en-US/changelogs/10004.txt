@@ -1,3 +1,0 @@
-Features
-- DMS coordinate format by default
-- Redesign SettingsScreen
