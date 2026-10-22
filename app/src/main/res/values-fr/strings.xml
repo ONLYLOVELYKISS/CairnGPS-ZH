@@ -57,6 +57,9 @@
     <string name="language_system">Système</string>
     <string name="language_french">Français</string>
     <string name="language_english">English</string>
+    <string name="language_chinese">Chinois (simplifié)</string>
+    <string name="chart_min_label_fmt">min %1$s</string>
+    <string name="chart_max_label_fmt">max %1$s</string>
     <string name="settings_coordinate_format">Format des coordonnées</string>
     <string name="coordinate_format_decimal">Décimal</string>
     <string name="settings_north_reference">Nord de la boussole</string>

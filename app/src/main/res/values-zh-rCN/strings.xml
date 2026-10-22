@@ -1,0 +1,563 @@
+<resources>
+    <string name="app_name">CairnGPS</string>
+
+    <!-- GPS status -->
+    <string name="waiting_for_fix">正在搜索卫星…</string>
+    <string name="waiting_for_fix_with_satellites">正在搜索卫星… 可见 %1$d 颗，已使用 %2$d 颗</string>
+    <string name="fix_obtained">定位成功</string>
+    <string name="fix_obtained_with_satellites">3D 定位 · %1$d 颗卫星</string>
+    <string name="fix_lost">GPS 信号丢失，正在重新搜索…</string>
+    <string name="hint_clear_sky">移至视野开阔处可加快定位。</string>
+
+    <!-- Permission -->
+    <string name="permission_title">需要位置信息权限</string>
+    <string name="permission_rationale">CairnGPS 需要获取您的精确 GPS 位置，以显示坐标、海拔等信息。\n\n所有数据均保存在您的设备上，不会发送到网络。</string>
+    <string name="permission_grant">允许访问</string>
+    <string name="permission_denied_rationale">位置权限已被拒绝。CairnGPS 需要访问位置信息才能正常工作。您可以在应用设置中启用此权限。</string>
+    <string name="permission_approximate_rationale">CairnGPS 需要精确位置信息才能工作。大致位置不足以提供 GPS 坐标和卫星数据，请允许访问精确位置。</string>
+    <string name="permission_open_settings">打开设置</string>
+
+    <!-- GPS coordinates -->
+    <string name="hemisphere_west">西</string>
+
+    <!-- Main screen: data labels -->
+    <string name="label_coordinates">坐标</string>
+    <string name="label_latitude">纬度</string>
+    <string name="label_longitude">经度</string>
+    <string name="label_altitude">海拔</string>
+    <string name="label_speed">速度</string>
+    <string name="label_accuracy">水平精度</string>
+    <string name="label_precision">精度</string>
+    <string name="label_accuracy_h">水平</string>
+    <string name="label_accuracy_v">垂直</string>
+
+    <!-- Bottom navigation tabs -->
+    <string name="tab_home">位置</string>
+    <string name="tab_compass">导航</string>
+    <string name="tab_satellites">卫星</string>
+    <string name="tab_history">记录</string>
+    <string name="tab_achievements">成就</string>
+    <string name="tab_profile">个人资料</string>
+
+    <!-- Actions -->
+    <string name="coordinates_copied">坐标已复制</string>
+    <string name="action_open_settings">设置</string>
+    <string name="action_back">返回</string>
+
+    <!-- Settings screen -->
+    <string name="settings_title">设置</string>
+    <string name="settings_display_section">显示</string>
+    <string name="settings_navigation_section">导航</string>
+    <string name="settings_theme">主题</string>
+    <string name="settings_theme_battery_hint">在 OLED 屏幕上使用深色主题可节省电量。</string>
+    <string name="theme_system">跟随系统</string>
+    <string name="theme_light">浅色</string>
+    <string name="theme_dark">深色</string>
+    <string name="settings_language">语言</string>
+    <string name="language_system">跟随系统</string>
+    <string name="language_french">法语</string>
+    <string name="language_english">英语</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="chart_min_label_fmt">最小值 %1$s</string>
+    <string name="chart_max_label_fmt">最大值 %1$s</string>
+    <string name="settings_coordinate_format">坐标格式</string>
+    <string name="coordinate_format_decimal">十进制度</string>
+    <string name="settings_north_reference">罗盘北向</string>
+    <string name="coordinate_format_dms">度分秒</string>
+    <string name="settings_unit_system">单位制</string>
+    <string name="unit_system_metric">公制</string>
+    <string name="unit_system_imperial">英制</string>
+    <string name="settings_help_section">帮助</string>
+    <string name="settings_replay_onboarding_title">重新查看引导</string>
+    <string name="settings_replay_onboarding_subtitle">使用示例数据重新了解应用各个界面</string>
+    <string name="settings_demo_section">调试</string>
+    <string name="settings_demo_title">演示模式</string>
+    <string name="settings_demo_subtitle">使用模拟位置、卫星和历史记录制作截图。应用将重新启动。</string>
+    <string name="settings_data_section">数据</string>
+    <string name="settings_export_title">导出数据</string>
+    <string name="settings_export_subtitle">将航点、轨迹、成就和设置保存到一个文件</string>
+    <string name="settings_export_success">备份已导出</string>
+    <string name="settings_export_error">备份导出失败</string>
+    <string name="settings_import_title">导入备份</string>
+    <string name="settings_import_subtitle">恢复之前导出的备份文件</string>
+    <string name="settings_import_confirm_title">替换所有数据？</string>
+    <string name="settings_import_confirm_message">航点、轨迹、成就、记录和当前设置将被导入文件中的内容永久替换。此操作无法撤销。</string>
+    <string name="settings_import_confirm_action">替换</string>
+    <string name="settings_import_success">数据已成功恢复</string>
+    <string name="settings_import_error_unreadable">无法读取备份文件</string>
+    <string name="settings_import_error_future_version">此备份由较新版本的应用创建</string>
+
+    <!-- Onboarding tour -->
+    <string name="onboarding_step_1_title">欢迎使用 CairnGPS</string>
+    <string name="onboarding_step_1_body">本快速引导使用示例数据，其中的位置和历史记录都不是真实数据。点击任意位置继续。</string>
+    <string name="onboarding_step_2_title">查看您的坐标</string>
+    <string name="onboarding_step_2_body">纬度和经度会实时更新。点击卡片即可复制坐标，也可以在设置中切换十进制度和度分秒格式。</string>
+    <string name="onboarding_step_3_title">海拔与信号质量</string>
+    <string name="onboarding_step_3_body">海拔以米为单位显示。彩色圆点表示 GPS 精度：绿色表示良好，橙色表示一般，红色表示较差。破折号表示尚未定位。</string>
+    <string name="onboarding_step_4_title">标记地点，记录徒步</string>
+    <string name="onboarding_step_4_body">保存当前位置为航点，或开始记录轨迹，记录沿途的距离、海拔和速度。</string>
+    <string name="onboarding_step_5_title">试试罗盘</string>
+    <string name="onboarding_step_5_body">点击“导航”查看您的方向以及到目标的方位。</string>
+    <string name="onboarding_step_6_title">找到前进方向</string>
+    <string name="onboarding_step_6_body">罗盘显示您的航向，可以选择真北或磁北。选择已保存的航点作为目标，即可查看方位和距离。</string>
+    <string name="onboarding_step_7_title">查看头顶的卫星</string>
+    <string name="onboarding_step_7_body">查看 GPS 芯片当前能接收到的卫星信号。</string>
+    <string name="onboarding_step_8_title">天空图</string>
+    <string name="onboarding_step_8_body">每个点代表一颗卫星，其位置根据方位角和仰角绘制。颜色表示所属星座，实心点表示该卫星已参与定位。</string>
+    <string name="onboarding_step_9_title">查看 3D 视图</string>
+    <string name="onboarding_step_9_body">打开 3D 地球仪，更全面地了解您头顶的卫星。</string>
+    <string name="onboarding_step_10_title">3D 地球仪</string>
+    <string name="onboarding_step_10_body">拖动以旋转地球仪，点击卫星查看其详细信息。</string>
+    <string name="onboarding_step_11_title">个人资料</string>
+    <string name="onboarding_step_11_body">前往个人资料，查看您的进度和历史记录。</string>
+    <string name="onboarding_step_12_title">您的记录</string>
+    <string name="onboarding_step_12_body">记录页面会保存您标记的所有航点和录制的所有徒步轨迹。</string>
+    <string name="onboarding_step_13_title">航点和轨迹</string>
+    <string name="onboarding_step_13_body">在已保存的航点和已录制的轨迹之间切换。点击任一条目可查看详情。</string>
+    <string name="onboarding_step_14_title">成就</string>
+    <string name="onboarding_step_14_body">徒步可以解锁成就和等级。点击此处查看完整目录。</string>
+    <string name="onboarding_step_15_title">追踪进度</string>
+    <string name="onboarding_step_15_body">每枚徽章都代表一个里程碑，从标记第一个航点到登上最高的山峰。</string>
+    <string name="onboarding_step_16_title">准备就绪</string>
+    <string name="onboarding_step_16_body">引导到此结束。您可以随时在设置中重新查看。</string>
+    <string name="onboarding_skip">跳过</string>
+    <string name="onboarding_next">下一步</string>
+    <string name="onboarding_start">开始</string>
+    <string name="onboarding_progress">%1$d/%2$d</string>
+
+    <!-- Waypoints -->
+    <string name="action_save_waypoint">保存航点</string>
+    <string name="waypoint_save_dialog_title">新建航点</string>
+    <string name="waypoint_name_label">航点名称</string>
+    <string name="waypoint_default_name_prefix">航点</string>
+    <string name="waypoint_saved">航点已保存</string>
+    <string name="action_save">保存</string>
+    <string name="action_cancel">取消</string>
+    <string name="waypoints_empty">尚未保存航点。\n\n在“位置”页面点击“保存此位置”即可记录当前位置。</string>
+    <string name="waypoint_detail_title">航点</string>
+    <string name="label_measurements">测量数据</string>
+    <string name="label_satellites_used">参与定位的卫星</string>
+    <string name="waypoint_created_at_fmt">保存于 %1$s</string>
+    <string name="action_open_in_maps">在地图应用中打开</string>
+    <string name="no_maps_app">未安装地图应用</string>
+    <string name="action_delete">删除</string>
+    <string name="action_export_gpx">导出为 GPX</string>
+    <string name="gpx_export_success">GPX 文件已导出</string>
+    <string name="gpx_export_error">无法导出 GPX 文件</string>
+    <string name="action_share_gpx">分享轨迹</string>
+    <string name="gpx_share_no_app">没有应用可以打开 GPX 文件</string>
+    <string name="waypoint_delete_dialog_title">删除此航点？</string>
+    <string name="waypoint_delete_dialog_message_fmt">“%1$s”将被永久删除。所属轨迹不受影响。此操作无法撤销。</string>
+    <string name="waypoint_parent_session">所属轨迹</string>
+    <string name="action_rename">重命名</string>
+    <string name="waypoint_rename_dialog_title">重命名航点</string>
+
+    <!-- Waypoint icon picker -->
+    <string name="action_change_icon">更改图标</string>
+    <string name="waypoint_icon_sheet_title">航点图标</string>
+    <string name="waypoint_icon_current_selection">当前选择</string>
+    <string name="waypoint_icon_edit_link">更改图标 ›</string>
+    <string name="waypoint_icon_flag">旗帜</string>
+    <string name="waypoint_icon_terrain">地形</string>
+    <string name="waypoint_icon_forest">森林</string>
+    <string name="waypoint_icon_water_drop">水源</string>
+    <string name="waypoint_icon_park">公园</string>
+    <string name="waypoint_icon_hiking">徒步</string>
+    <string name="waypoint_icon_cottage">避难所</string>
+    <string name="waypoint_icon_cabin">木屋</string>
+    <string name="waypoint_icon_restaurant">餐厅</string>
+    <string name="waypoint_icon_photo_camera">观景点</string>
+    <string name="waypoint_icon_local_parking">停车场</string>
+    <string name="waypoint_icon_warning">危险</string>
+    <string name="waypoint_icon_star">收藏</string>
+    <string name="waypoint_icon_pin_drop">兴趣点</string>
+    <string name="waypoint_icon_sailing">航海</string>
+    <string name="waypoint_icon_waves">游泳</string>
+
+    <!-- History screen -->
+    <string name="history_tab_waypoints">航点</string>
+    <string name="history_tab_tracks">轨迹</string>
+    <string name="sessions_empty">尚未记录轨迹。\n\n在“位置”页面点击“开始”即可开始记录轨迹。</string>
+    <string name="label_current_distance">当前距离</string>
+
+    <!-- Recording -->
+    <string name="recording_title">正在记录</string>
+    <string name="recording_start">开始</string>
+    <string name="recording_stop">停止</string>
+    <string name="recording_duration">时长</string>
+    <string name="recording_distance">距离</string>
+    <string name="recording_avg_speed">平均速度</string>
+    <string name="recording_max_speed">最高速度</string>
+    <string name="recording_elevation_gain">爬升</string>
+    <string name="recording_elevation_loss">下降</string>
+    <string name="recording_notification_channel_name">轨迹记录</string>
+    <string name="recording_notification_title_fmt">正在记录 · %1$s</string>
+    <string name="recording_notification_content">海拔 %1$s %2$s · %3$s %4$s · %5$s %6$s</string>
+    <string name="recording_signal_too_noisy_fmt">信号精度不足（±%1$s %2$s），未记录数据（精度要求：%3$s %4$s）。</string>
+    <string name="recording_notification_signal_too_noisy_fmt">信号精度不足（±%1$s %2$s），未记录数据</string>
+    <string name="recording_discarded_title">轨迹未保存</string>
+    <string name="recording_discarded_message_fmt">GPS 信号精度不足（±%1$s %2$s），无法记录任何位置点。</string>
+    <string name="recording_discarded_message_no_fix">尚未收到 GPS 定位，无法记录任何位置点。</string>
+    <string name="recording_discarded_channel_name">轨迹未保存</string>
+
+    <!-- Session detail -->
+    <string name="session_default_name_prefix">轨迹</string>
+    <string name="session_detail_title">轨迹</string>
+    <string name="session_waypoints_label">轨迹航点</string>
+    <string name="session_waypoints_empty">此轨迹尚未关联航点。</string>
+    <string name="session_delete_dialog_title">删除此轨迹？</string>
+    <string name="session_delete_dialog_message">此操作无法撤销。关联的航点将予以保留。</string>
+    <string name="session_departure_fmt">● 开始 %1$s</string>
+    <string name="session_arrival_fmt">○ 结束 %1$s</string>
+    <string name="session_stat_distance_fmt">%1$s</string>
+    <string name="session_stat_duration">时长</string>
+    <string name="session_stat_elevation_gain_fmt">%1$s 爬升</string>
+    <string name="session_stat_elevation_loss_fmt">%1$s 下降</string>
+    <string name="session_stat_max_speed_fmt">最高 %1$s</string>
+    <string name="session_stat_avg_speed_fmt">平均 %1$s</string>
+    <string name="session_rename_dialog_title">重命名轨迹</string>
+    <string name="session_name_label">轨迹名称</string>
+    <string name="label_altitude_profile">海拔曲线</string>
+    <string name="label_speed_profile">速度曲线</string>
+
+    <!-- Satellites screen -->
+    <string name="satellites_title">卫星</string>
+    <string name="sats_waiting">正在等待卫星数据…</string>
+    <string name="sats_status_chip_fmt">可见 %1$d 颗 · 已定位 %2$d 颗</string>
+    <string name="sat_elevation_azimuth">仰角 %1$d° · 方位角 %2$d°</string>
+    <string name="unit_dbhz">dB-Hz</string>
+    <string name="sats_col_sat">卫星</string>
+    <string name="sats_col_el_az">仰角 · 方位</string>
+    <string name="sats_col_el">仰角</string>
+    <string name="sats_col_az">方位</string>
+    <string name="sats_col_signal">信号</string>
+    <string name="sats_help_cd">这些数值代表什么？</string>
+    <string name="sats_help_title">图例</string>
+    <string name="sats_help_sat_id_name">卫星编号</string>
+    <string name="sats_help_sat_id_desc">星座代号（GPS 为 G、GLONASS 为 R、Galileo 为 E、北斗为 C 等）后跟该星座内的卫星编号。</string>
+    <string name="sats_help_signal_name">信号（C/N0）</string>
+    <string name="sats_help_signal_desc">载噪密度，表示卫星信号的质量。\n&lt; 25 dB-Hz：较弱\n25 至 35 dB-Hz：可用\n&gt; 40 dB-Hz：优秀</string>
+    <string name="sats_help_elevation_name">仰角</string>
+    <string name="sats_help_elevation_desc">卫星高于地平线的角度：0° 表示位于地平线上，90° 表示位于正上方。</string>
+    <string name="sats_help_azimuth_name">方位角</string>
+    <string name="sats_help_azimuth_desc">卫星的方向，从真北（0°）开始顺时针测量：东为 90°，南为 180°。</string>
+    <string name="sats_help_fixed_name">已定位 / 可见</string>
+    <string name="sats_help_fixed_desc">卫星即使可见，也不一定参与计算当前位置。未用于定位的卫星会以较暗的颜色显示。</string>
+
+    <!-- 3D satellite globe -->
+    <string name="action_open_satellite_globe">3D 地球仪</string>
+    <string name="satellite_globe_title">3D 卫星视图</string>
+    <string name="globe_no_fixed_satellites">尚无卫星参与定位</string>
+
+    <!-- Constellation info page -->
+    <string name="action_open_constellation_info">卫星星座</string>
+    <string name="constellation_info_title">GNSS 卫星星座</string>
+    <string name="constellation_info_intro">GNSS 接收器组合多个卫星星座的信号来确定您的位置。可见的系统越多，定位精度越高，定位所需时间也越短。</string>
+    <string name="constellation_gps_region">美国</string>
+    <string name="constellation_gps_stats">31 颗卫星 · 中地球轨道 20,180 千米 · L1 C/A、L2C、L5</string>
+    <string name="constellation_gps_desc">历史悠久、覆盖全球的卫星系统。L5 频段有助于提高山区和城市峡谷中的定位精度。</string>
+    <string name="constellation_glonass_region">俄罗斯</string>
+    <string name="constellation_glonass_stats">24 颗卫星 · 中地球轨道 19,130 千米 · L1OF、L2OF</string>
+    <string name="constellation_glonass_desc">高倾角轨道在高纬度地区可见性更好，对北部高山地区十分有用。</string>
+    <string name="constellation_galileo_region">欧盟</string>
+    <string name="constellation_galileo_stats">28 颗卫星 · 中地球轨道 23,222 千米 · E1、E5a、E5b</string>
+    <string name="constellation_galileo_desc">民用定位精度最高（使用 E5 时可低于 1 米），并内置遇险返程服务。</string>
+    <string name="constellation_beidou_region">中国</string>
+    <string name="constellation_beidou_stats">44 颗卫星 · 中地球轨道 + 倾斜地球同步轨道 + 地球静止轨道 · B1、B2、B3</string>
+    <string name="constellation_beidou_desc">混合轨道星座，地球静止轨道卫星可增强亚太地区的覆盖范围。</string>
+    <string name="constellation_qzss_region">日本</string>
+    <string name="constellation_qzss_stats">4 颗卫星 · 准天顶轨道 · L1、L2、L5、L6</string>
+    <string name="constellation_qzss_desc">区域性系统，卫星经常经过日本上空，有助于提高建筑物和山谷之间的定位可靠性。</string>
+    <string name="constellation_irnss_region">印度</string>
+    <string name="constellation_irnss_stats">7 颗卫星 · 地球静止轨道 + 地球同步轨道 35,786 千米 · L5、S 波段</string>
+    <string name="constellation_irnss_desc">区域性系统 NavIC，覆盖印度及周边约 1,500 千米范围。地球同步轨道可提供稳定的上空覆盖。</string>
+
+    <!-- Compass screen -->
+    <string name="compass_title">罗盘</string>
+    <string name="compass_north_magnetic">磁北</string>
+    <string name="compass_north_true">真北</string>
+    <string name="compass_declination">磁偏角：%1$s° %2$s</string>
+    <string name="compass_true_north_unavailable">GPS 位置未知，无法显示真北</string>
+    <string name="compass_calibration_needed">罗盘需要校准</string>
+    <string name="compass_calibration_hint">请手持设备画 8 字形移动。</string>
+    <string name="compass_sensor_unavailable">此设备没有罗盘传感器。</string>
+    <string name="compass_target_ref_true">真北</string>
+    <string name="compass_target_ref_magnetic">磁北</string>
+    <string name="compass_target_bearing_fmt">方位角 %1$d° · %2$s</string>
+    <string name="compass_change_target">更改目标航点</string>
+    <string name="compass_select_target_title">目标航点</string>
+    <string name="compass_create_target_here">在此处新建航点</string>
+    <string name="compass_enter_coordinates">输入坐标</string>
+    <string name="compass_coordinates_dialog_title">目标坐标</string>
+    <string name="compass_coordinates_hint">使用十进制度，例如 45.832600 和 6.864500。南纬或西经请使用负号。</string>
+    <string name="compass_coordinates_paste">从剪贴板粘贴</string>
+    <string name="compass_coordinates_paste_invalid">剪贴板中未找到两个坐标值。</string>
+    <string name="compass_no_waypoints">尚未保存航点。\n\n在“位置”页面点击“保存航点”即可创建航点。</string>
+    <string name="compass_no_target_hint">请选择一个前往的航点。</string>
+    <string name="action_navigate_to_waypoint">导航至此航点</string>
+    <!-- Compass rose: 4 cardinal points, in order N, E, S, W -->
+    <string-array name="compass_rose_labels">
+        <item>北</item><item>东</item><item>南</item><item>西</item>
+    </string-array>
+    <!-- 8 cardinal points, clockwise starting from north -->
+    <string-array name="compass_cardinals">
+        <item>北</item><item>东北</item><item>东</item><item>东南</item>
+        <item>南</item><item>西南</item><item>西</item><item>西北</item>
+    </string-array>
+
+    <!-- Gamification: achievements & records -->
+    <string name="achievements_loading">正在加载成就…</string>
+    <string name="achievements_counter_fmt">%1$d/%2$d</string>
+    <string name="achievements_next_label_fmt">下一个成就 · %1$s</string>
+    <string name="achievement_xp_fmt">+%1$d 经验值</string>
+    <string name="achievement_unlocked_banner_title">已解锁成就！</string>
+
+    <!-- Achievement families -->
+    <string name="achievement_family_altitude">海拔高度</string>
+    <string name="achievement_family_speed">行进速度</string>
+    <string name="achievement_family_satellites">同时使用的卫星</string>
+    <string name="achievement_family_distance">累计距离</string>
+    <string name="achievement_family_sessions">记录次数</string>
+    <string name="achievement_family_geo">地理坐标探索</string>
+    <string name="achievement_family_time">特别时刻</string>
+    <string name="achievement_family_reperes">标记航点</string>
+    <string name="achievement_family_boussole">罗盘</string>
+    <string name="achievement_family_maitrise">应用使用</string>
+
+    <!-- Achievements: altitude reached -->
+    <string name="achievement_altitude_1000_title">登上第一座山峰</string>
+    <string name="achievement_altitude_1000_desc">海拔达到 %1$s %2$s。</string>
+    <string name="achievement_altitude_puy_de_dome_title">多姆山</string>
+    <string name="achievement_altitude_puy_de_dome_desc">海拔达到 %1$s %2$s，即法国多姆山的高度。</string>
+    <string name="achievement_altitude_2000_title">再攀高峰</string>
+    <string name="achievement_altitude_2000_desc">海拔达到 %1$s %2$s。</string>
+    <string name="achievement_altitude_3000_title">登山达人</string>
+    <string name="achievement_altitude_3000_desc">海拔达到 %1$s %2$s。</string>
+    <string name="achievement_altitude_neg_title">低于海平面</string>
+    <string name="achievement_altitude_neg_desc">到达海拔为负的位置。</string>
+    <string name="achievement_altitude_fuji_title">富士山</string>
+    <string name="achievement_altitude_fuji_desc">海拔达到 %1$s %2$s，即富士山的高度。</string>
+    <string name="achievement_altitude_mont_blanc_title">勃朗峰</string>
+    <string name="achievement_altitude_mont_blanc_desc">海拔达到 %1$s %2$s，即勃朗峰的高度。</string>
+    <string name="achievement_altitude_kilimanjaro_title">乞力马扎罗山</string>
+    <string name="achievement_altitude_kilimanjaro_desc">海拔达到 %1$s %2$s，即乞力马扎罗山的高度。</string>
+    <string name="achievement_altitude_denali_title">迪纳利山</string>
+    <string name="achievement_altitude_denali_desc">海拔达到 %1$s %2$s，即迪纳利山的高度。</string>
+    <string name="achievement_altitude_everest_title">世界之巅</string>
+    <string name="achievement_altitude_everest_desc">海拔达到 %1$s %2$s，即珠穆朗玛峰的高度。</string>
+
+    <!-- Achievements: elevation gain -->
+    <string name="achievement_dplus_500_title">攀登者</string>
+    <string name="achievement_dplus_500_desc">单次行程累计爬升 500 米。</string>
+    <string name="achievement_dplus_1000_title">千米爬升</string>
+    <string name="achievement_dplus_1000_desc">单次行程累计爬升 1,000 米。</string>
+    <string name="achievement_dplus_everest_title">累计登顶珠峰</string>
+    <string name="achievement_dplus_everest_desc">所有行程累计爬升达到 8,849 米。</string>
+
+    <!-- Achievements: speed -->
+    <string name="achievement_speed_30_title">顺势滑行</string>
+    <string name="achievement_speed_30_desc">速度达到 %1$s %2$s。</string>
+    <string name="achievement_speed_50_title">健步如飞</string>
+    <string name="achievement_speed_50_desc">速度达到 %1$s %2$s。</string>
+    <string name="achievement_speed_cruise_title">巡航速度</string>
+    <string name="achievement_speed_cruise_desc">以平均 5 千米/小时的速度持续行进一小时。</string>
+    <string name="achievement_speed_100_title">全速前进</string>
+    <string name="achievement_speed_100_desc">速度达到 %1$s %2$s。</string>
+    <string name="achievement_speed_300_title">高速行驶</string>
+    <string name="achievement_speed_300_desc">速度达到 %1$s %2$s，即高速列车的速度。</string>
+    <string name="achievement_speed_800_title">长途飞行</string>
+    <string name="achievement_speed_800_desc">速度达到 %1$s %2$s，即客机的速度。</string>
+
+    <!-- Achievements: satellites -->
+    <string name="achievement_satellites_8_title">信号良好</string>
+    <string name="achievement_satellites_8_desc">同时使用 8 颗卫星定位。</string>
+    <string name="achievement_satellites_12_title">晴空万里</string>
+    <string name="achievement_satellites_12_desc">同时使用 12 颗卫星定位。</string>
+    <string name="achievement_sat_zenith_title">直冲天顶</string>
+    <string name="achievement_sat_zenith_desc">看到一颗卫星经过正上方。</string>
+    <string name="achievement_satellites_20_title">极致精度</string>
+    <string name="achievement_satellites_20_desc">同时使用 20 颗卫星定位。</string>
+    <string name="achievement_sat_const_4_title">星座探索者</string>
+    <string name="achievement_sat_const_4_desc">同时接收 GPS、GLONASS、Galileo 和北斗信号。</string>
+    <string name="achievement_acc_3m_title">精准至米</string>
+    <string name="achievement_acc_3m_desc">水平精度达到 3 米或更高。</string>
+    <string name="achievement_satellites_30_title">群星闪耀</string>
+    <string name="achievement_satellites_30_desc">同时使用 30 颗卫星定位。</string>
+    <string name="achievement_sat_const_6_title">星座收藏家</string>
+    <string name="achievement_sat_const_6_desc">同时接收六个卫星星座的信号。</string>
+
+    <!-- Achievements: notable times -->
+    <string name="achievement_time_night_owl_title">夜行者</string>
+    <string name="achievement_time_night_owl_desc">在晚上 10 点后保存航点。</string>
+    <string name="achievement_time_early_bird_title">早起的鸟儿</string>
+    <string name="achievement_time_early_bird_desc">在早上 6 点前保存航点。</string>
+    <string name="achievement_time_minuit_title">跨越午夜</string>
+    <string name="achievement_time_minuit_desc">在跨日时仍在记录轨迹。</string>
+    <string name="achievement_time_new_year_title">新年新目标</string>
+    <string name="achievement_time_new_year_desc">在 1 月 1 日记录一次行程。</string>
+    <string name="achievement_time_solstice_title">夏至徒步</string>
+    <string name="achievement_time_solstice_desc">在 6 月 21 日记录一次行程。</string>
+    <string name="achievement_time_leap_day_title">闰日徒步</string>
+    <string name="achievement_time_leap_day_desc">在 2 月 29 日记录一次行程。</string>
+
+    <!-- Achievements: cumulative distance -->
+    <string name="achievement_distance_10_title">迈出第一步</string>
+    <string name="achievement_distance_10_desc">累计行进 %1$s %2$s。</string>
+    <string name="achievement_distance_marathon_title">马拉松行者</string>
+    <string name="achievement_distance_marathon_desc">累计行进马拉松全程的距离。</string>
+    <string name="achievement_distance_50_title">徒步健将</string>
+    <string name="achievement_distance_50_desc">累计行进 %1$s %2$s。</string>
+    <string name="achievement_distance_session_20_title">长途跋涉</string>
+    <string name="achievement_distance_session_20_desc">单次行程行进 20 千米。</string>
+    <string name="achievement_distance_100_title">百里行者</string>
+    <string name="achievement_distance_100_desc">累计行进 %1$s %2$s。</string>
+    <string name="achievement_distance_500_title">旅行达人</string>
+    <string name="achievement_distance_500_desc">累计行进 %1$s %2$s。</string>
+    <string name="achievement_distance_1000_title">千里之行</string>
+    <string name="achievement_distance_1000_desc">累计行进 %1$s %2$s。</string>
+    <string name="achievement_distance_equateur_title">环游世界</string>
+    <string name="achievement_distance_equateur_desc">累计行进赤道周长的距离。</string>
+
+    <!-- Achievements: number of sessions -->
+    <string name="achievement_sessions_1_title">首次出发</string>
+    <string name="achievement_sessions_1_desc">记录您的第一次行程。</string>
+    <string name="achievement_sessions_10_title">熟悉山野</string>
+    <string name="achievement_sessions_10_desc">记录 10 次行程。</string>
+    <string name="achievement_sessions_50_title">徒步老手</string>
+    <string name="achievement_sessions_50_desc">记录 50 次行程。</string>
+    <string name="achievement_sessions_streak_7_title">每周坚持</string>
+    <string name="achievement_sessions_streak_7_desc">连续 7 天每天记录一次行程。</string>
+    <string name="achievement_sessions_3h_title">持久耐力</string>
+    <string name="achievement_sessions_3h_desc">记录一段超过 3 小时的行程。</string>
+    <string name="achievement_sessions_100_title">百次徒步</string>
+    <string name="achievement_sessions_100_desc">记录 100 次行程。</string>
+    <string name="achievement_sessions_streak_30_title">坚持不懈</string>
+    <string name="achievement_sessions_streak_30_desc">连续 30 天每天记录一次行程。</string>
+    <string name="achievement_sessions_12_mois_title">四季皆行</string>
+    <string name="achievement_sessions_12_mois_desc">在 12 个月中每个月至少记录一次行程。</string>
+
+    <!-- Achievements: geographic crossings -->
+    <string name="achievement_geo_45th_parallel_title">向北前行</string>
+    <string name="achievement_geo_45th_parallel_desc">越过北纬 45 度线。</string>
+    <string name="achievement_geo_equator_title">跨越南北半球</string>
+    <string name="achievement_geo_equator_desc">到达过赤道以北和以南。</string>
+    <string name="achievement_geo_greenwich_title">跨越本初子午线</string>
+    <string name="achievement_geo_greenwich_desc">到达过格林尼治子午线以东和以西。</string>
+    <string name="achievement_geo_confluence_title">经纬交汇</string>
+    <string name="achievement_geo_confluence_desc">到达距离整数经纬度交点 100 米以内的位置。</string>
+    <string name="achievement_geo_tropiques_title">热带之行</string>
+    <string name="achievement_geo_tropiques_desc">到达热带地区。</string>
+    <string name="achievement_geo_arctique_title">北极圈探险</string>
+    <string name="achievement_geo_arctique_desc">越过北极圈。</string>
+    <string name="achievement_geo_45s_title">南纬 45 度线</string>
+    <string name="achievement_geo_45s_desc">到达南纬 45 度以南。</string>
+    <string name="achievement_geo_ligne_zero_title">赤道之旅</string>
+    <string name="achievement_geo_ligne_zero_desc">到达距离赤道 1 千米以内的位置。</string>
+
+    <!-- Achievements: waypoints placed -->
+    <string name="achievement_waypoints_1_title">标记第一站</string>
+    <string name="achievement_waypoints_1_desc">创建您的第一个航点。</string>
+    <string name="achievement_waypoints_session_10_title">详细行程</string>
+    <string name="achievement_waypoints_session_10_desc">单次行程中标记 10 个航点。</string>
+    <string name="achievement_waypoints_50_title">航点达人</string>
+    <string name="achievement_waypoints_50_desc">标记 50 个航点。</string>
+    <string name="achievement_waypoints_icones_title">地图绘制达人</string>
+    <string name="achievement_waypoints_icones_desc">至少使用一次所有可用的航点图标。</string>
+
+    <!-- Achievements: compass -->
+    <string name="achievement_compass_decl_title">磁北的偏差</string>
+    <string name="achievement_compass_decl_desc">到达磁偏角超过 10° 的地区。</string>
+
+    <!-- Achievements: app mastery -->
+    <string name="achievement_app_export_title">记录归档者</string>
+    <string name="achievement_app_export_desc">将轨迹导出为 GPX 文件。</string>
+    <string name="achievement_app_backup_title">有备无患</string>
+    <string name="achievement_app_backup_desc">备份数据库。</string>
+    <string name="achievement_app_themes_title">明暗皆宜</string>
+    <string name="achievement_app_themes_desc">使用浅色和深色两种主题。</string>
+    <string name="achievement_app_formats_title">两种坐标格式</string>
+    <string name="achievement_app_formats_desc">使用两种坐标格式查看您的位置。</string>
+
+    <!-- Records screen -->
+    <string name="records_title">个人记录</string>
+    <string name="record_max_speed">最高速度</string>
+    <string name="record_max_altitude">最高海拔</string>
+    <string name="record_min_altitude">最低海拔</string>
+    <string name="record_northernmost">最北位置</string>
+    <string name="record_southernmost">最南位置</string>
+    <string name="record_easternmost">最东位置</string>
+    <string name="record_westernmost">最西位置</string>
+    <string name="record_max_elevation_gain">最大爬升</string>
+    <string name="record_max_distance">最远距离</string>
+
+    <!-- Levels -->
+    <string name="level_title_1">徒步新手</string>
+    <string name="level_title_2">漫步行者</string>
+    <string name="level_title_3">徒步者</string>
+    <string name="level_title_4">勘察者</string>
+    <string name="level_title_5">探路者</string>
+    <string name="level_title_6">山脊行者</string>
+    <string name="level_title_7">山顶追寻者</string>
+    <string name="level_title_8">登山者</string>
+    <string name="level_title_9">登顶达人</string>
+    <string name="level_title_10">山径传奇</string>
+
+    <!-- Profile hub -->
+    <string name="profile_stat_total_km_fmt">累计 %1$s</string>
+    <string name="profile_stat_sessions">次行程</string>
+    <string name="profile_stat_achievements">项成就</string>
+    <string name="profile_last_achievement_label">最近成就</string>
+    <string name="profile_hub_history_subtitle_fmt">%1$d 个航点 · %2$d 次行程</string>
+    <string name="profile_hub_achievements_subtitle_fmt">已解锁 %1$d / %2$d</string>
+    <string name="profile_hub_records_subtitle">您的最佳记录</string>
+    <string name="profile_level_label">等级</string>
+    <string name="profile_level_xp_fmt">%1$d 经验值</string>
+    <string name="profile_level_remaining_fmt">还需 %1$d 经验值</string>
+    <string name="profile_level_max">已达到最高等级</string>
+    <string name="levels_title">等级</string>
+    <string name="levels_current_badge">当前等级</string>
+
+    <!-- About screen -->
+    <string name="about_title">关于</string>
+    <string name="about_tagline">离线徒步 GPS。免费开源，无广告。</string>
+    <string name="about_build_fmt">构建版本 %1$d</string>
+    <string name="about_section_project">项目</string>
+    <string name="about_section_contact">联系方式</string>
+    <string name="about_source_title">源代码</string>
+    <string name="about_source_url">github.com/MatthieuTinnes/CairnGPS</string>
+    <string name="about_source_uri" translatable="false">https://github.com/MatthieuTinnes/CairnGPS</string>
+    <string name="about_license_row_title">AGPL-3.0 许可证</string>
+    <string name="about_license_row_subtitle">自由软件</string>
+    <string name="about_libraries_title">第三方组件</string>
+    <string name="about_libraries_subtitle_fmt">%1$d 个开源组件</string>
+    <string name="about_website_title">作者网站</string>
+    <string name="about_website_url">matthieu.app</string>
+    <string name="about_website_uri" translatable="false">https://matthieu.app</string>
+    <string name="about_email_title">联系作者</string>
+    <string name="about_email_address" translatable="false">cairngps@matthieu.app</string>
+    <string name="about_bug_hint">请直接在 GitHub 上报告问题，这样最快就能获得修复。</string>
+    <string name="about_privacy">您的数据不会离开手机。</string>
+    <string name="about_open_external">在外部应用中打开链接</string>
+    <string name="about_no_app">没有应用可以打开此链接</string>
+    <string name="about_license_screen_title">许可证</string>
+
+    <!-- Third-party components screen -->
+    <string name="about_libraries_screen_title">第三方组件</string>
+    <string name="about_libraries_intro">CairnGPS 不包含 Google Play 服务、Firebase 或追踪功能。应用基于 Android 平台以及以下组件构建。</string>
+    <string name="credit_androidx_name">AndroidX · Jetpack Compose · Room</string>
+    <string name="credit_androidx_license">Apache-2.0</string>
+    <string name="credit_androidx_desc">Google 的 Android 库，用于界面、导航、偏好设置存储和应用数据库。</string>
+    <string name="credit_kotlin_name">Kotlin · kotlinx</string>
+    <string name="credit_kotlin_license">Apache-2.0</string>
+    <string name="credit_kotlin_desc">Kotlin 语言、协程以及用于导入和导出备份的 kotlinx.serialization。</string>
+    <string name="credit_natural_earth_name">Natural Earth</string>
+    <string name="credit_natural_earth_license">公有领域</string>
+    <string name="credit_natural_earth_desc">1:110m 文化地理矢量数据（世界陆地），绘制于 3D 卫星地球仪上。</string>
+    <string name="credit_egm96_name">EGM96 大地水准面网格（NGA）</string>
+    <string name="credit_egm96_license">公有领域</string>
+    <string name="credit_egm96_desc">将 GPS 原始椭球高转换为海拔高度的大地水准面模型。</string>
+    <string name="credit_fonts_name">Roboto Mono · Material Symbols</string>
+    <string name="credit_fonts_license">Apache-2.0</string>
+    <string name="credit_fonts_desc">Google 的字体和图标集，均内置于应用中，应用不会下载字体。</string>
+    <string name="profile_hub_about_subtitle_fmt">版本 %1$s · 许可证与鸣谢</string>
+</resources>

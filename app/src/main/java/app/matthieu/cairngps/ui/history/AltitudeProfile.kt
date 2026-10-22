@@ -2,6 +2,8 @@ package app.matthieu.cairngps.ui.history
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import app.matthieu.cairngps.R
 import app.matthieu.cairngps.data.TrackPoint
 import app.matthieu.cairngps.data.UnitSystem
 import app.matthieu.cairngps.domain.format.formatElevation
@@ -40,8 +42,14 @@ fun AltitudeProfile(
         bubbleValueLabel = { index ->
             "${formatElevation(track[index].altitude, unitSystem)} ${shortUnitLabel(unitSystem)}"
         },
-        minLabel = "min ${formatElevation(minAltitude, unitSystem)} ${shortUnitLabel(unitSystem)}",
-        maxLabel = "max ${formatElevation(maxAltitude, unitSystem)} ${shortUnitLabel(unitSystem)}",
+        minLabel = stringResource(
+            R.string.chart_min_label_fmt,
+            "${formatElevation(minAltitude, unitSystem)} ${shortUnitLabel(unitSystem)}",
+        ),
+        maxLabel = stringResource(
+            R.string.chart_max_label_fmt,
+            "${formatElevation(maxAltitude, unitSystem)} ${shortUnitLabel(unitSystem)}",
+        ),
         modifier = modifier,
     )
 }

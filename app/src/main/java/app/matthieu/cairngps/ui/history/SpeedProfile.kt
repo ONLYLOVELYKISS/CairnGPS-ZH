@@ -3,6 +3,8 @@ package app.matthieu.cairngps.ui.history
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import app.matthieu.cairngps.R
 import app.matthieu.cairngps.data.TrackPoint
 import app.matthieu.cairngps.data.UnitSystem
 import app.matthieu.cairngps.domain.distanceAndBearing
@@ -73,8 +75,14 @@ fun SpeedProfile(
         selectedIndex = selectedIndex,
         onSelectedIndexChange = onSelectedIndexChange,
         bubbleValueLabel = { index -> "${formatSpeed(speeds[index], unitSystem)} ${speedUnitLabel(unitSystem)}" },
-        minLabel = "min ${formatSpeed(minSpeed, unitSystem)} ${speedUnitLabel(unitSystem)}",
-        maxLabel = "max ${formatSpeed(maxSpeed, unitSystem)} ${speedUnitLabel(unitSystem)}",
+        minLabel = stringResource(
+            R.string.chart_min_label_fmt,
+            "${formatSpeed(minSpeed, unitSystem)} ${speedUnitLabel(unitSystem)}",
+        ),
+        maxLabel = stringResource(
+            R.string.chart_max_label_fmt,
+            "${formatSpeed(maxSpeed, unitSystem)} ${speedUnitLabel(unitSystem)}",
+        ),
         modifier = modifier,
     )
 }

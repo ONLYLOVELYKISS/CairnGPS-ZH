@@ -78,11 +78,12 @@ import kotlinx.coroutines.flow.SharedFlow
 // Default export file name, e.g. "cairn-backup-2026-07-17.json" — sortable, filesystem-safe.
 private val BackupFileNameDateFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 
-// Maps the current per-app locale override to the language SegmentedToggle's index. An empty
+// Maps the current per-app locale override to the language selector's index. An empty
 // list means "follow the system language" (the default, nothing set yet).
 private fun languageIndexOf(locales: LocaleListCompat): Int = when {
     locales.isEmpty -> 0
     locales[0]?.language == "fr" -> 1
+    locales[0]?.language == "zh" -> 3
     else -> 2
 }
 
@@ -116,6 +117,7 @@ fun SettingsRoute(
                 when (index) {
                     1 -> LocaleListCompat.forLanguageTags("fr")
                     2 -> LocaleListCompat.forLanguageTags("en")
+                    3 -> LocaleListCompat.forLanguageTags("zh-CN")
                     else -> LocaleListCompat.getEmptyLocaleList()
                 },
             )
@@ -296,6 +298,7 @@ private fun SettingsScreen(
                             stringResource(R.string.language_system),
                             stringResource(R.string.language_french),
                             stringResource(R.string.language_english),
+                            stringResource(R.string.language_chinese),
                         ),
                         selectedIndex = languageIndex,
                         onSelect = onLanguageChange,

@@ -3,11 +3,13 @@
 </p>
 <h1 align="center">CairnGPS</h1>
 <p align="center">
-<b>Android app displaying</b> real-time GPS/GNSS information, with a gamification
-layer (achievements, records, levels) to make it fun.
+<b>一款实时显示 GPS/GNSS 信息的 Android 应用</b>，并通过成就、记录和等级等游戏化功能，让户外定位更加有趣。
 <br />
-Get it now from <a href="https://github.com/MatthieuTinnes/CairnGPS/releases">Releases</a>
-or on Google Play.
+立即前往 <a href="https://github.com/MatthieuTinnes/CairnGPS/releases">Releases</a> 下载，或通过 Google Play 获取。
+<br />
+<i>An Android app displaying real-time GPS/GNSS information with achievements, records and levels.</i>
+<br />
+<i>Available from <a href="https://github.com/MatthieuTinnes/CairnGPS/releases">Releases</a> or Google Play.</i>
 </p>
 <p align="center">
   <a href="https://play.google.com/store/apps/details?id=app.matthieu.cairngps">
@@ -20,6 +22,16 @@ or on Google Play.
   <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="30%" alt="Skyplot of satellites in view" />
   <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="30%" alt="3D globe view of satellites in view" />
 </p>
+
+## 关于本 Fork / About This Fork
+
+本仓库 Fork 自 [MatthieuTinnes/CairnGPS](https://github.com/MatthieuTinnes/CairnGPS)，保留上游 Android GPS/GNSS 应用的核心功能，并针对简体中文用户进行了本地化修改：
+
+- 新增完整的简体中文界面与中文资源。
+- 将历史记录中的海拔、速度图表标签本地化为“最小值”和“最大值”。
+- 将语言选择器中的语言名称本地化为“英语”“法语”和“简体中文”。
+
+This repository is forked from [MatthieuTinnes/CairnGPS](https://github.com/MatthieuTinnes/CairnGPS). It preserves the upstream Android GPS/GNSS features and adds a complete Simplified Chinese interface, localized history-chart labels, and localized language names in the language selector.
 
 ## Features
 
@@ -37,7 +49,7 @@ or on Google Play.
 - **Gamification**: unlockable achievements, personal records, levels based
   on accumulated XP.
 - **Backup/restore**: export/import all app data into a single file.
-- Light and dark themes, French and English.
+- Light and dark themes, English, French and Simplified Chinese.
 
 ## Tech stack
 
